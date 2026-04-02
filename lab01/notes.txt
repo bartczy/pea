@@ -1,0 +1,67 @@
+RAND
+6x6 - 180 prób prawie wszystkie są poniżej 10% błedu ale zdarzyła się sytyacja błędu 16%
+ 190 brób większość jest błąd 0% z żadkimi rzędu 8% czas około 0.02ms
+
+8x8 - 6000 prób błąd 0-8% choć 1 próba zakończyła się błędem 18% średni czas 1.2ms
+
+11x11 - 1_500_000 prób błąd około 2-7% parę prób około 10% średi czas 290ms
+
+14x14 - 2_100_000_000 brób średni błąd 5,83% średni czas 519,371s
+
+
+NN
+6x6 - błąd 8% czas >0ms
+8x8 - błąd 11.76% czas 0.01ms
+11x11 - błąd 62.42% czas 0.01ms
+15x15 - błąd 46.95% czas 0.01ms
+20x20 - błąd 66.84% czas 0.05ms
+50x50 - czas 5.9ms
+60x60 - czas 1.48ms
+70x70 - czas 25.69ms
+80x80 - czas 5357.66ms
+90x90 - czas 371.14s max poniżej 15 minut
+91x91 - czas 1605.5s
+
+RNN
+6x6 - błąd 0% czas 0.02ms
+8x8 - błąd 6.62% czas 0.04ms
+11x11 - błąd 7.35% czas 0.07ms
+15x15 - błąd 28.05% czas 0.16ms
+20x20 - błąd 35.75% czas 0.42ms
+50x50 - czas 404.57ms
+60x60 - czas 580.20ms
+70x70 - czas 6393.75ms
+71x71 - czas 631.78s
+72x72 - czas 11s
+73x73 - czas 6.71s
+74x74 - czas 227.02s
+75x75 - czas 9.16s
+76x76 nie przeszło
+
+
+BRUTE FORCE(bład 0% zawsze)
+6x6 - czas 0.03ms
+8x8 - czas 0.14ms
+11x11 - czas 7.63ms
+15x15 - 542.94ms
+20x20 - 118s
+
+
+
+
+
+
+
+
+
+
+
+1. Metoda minimalizacji powtórzeń (bez sekwencyjności)Zgodnie z Twoim pytaniem: tak, istnieje taka metoda. Problem z klasycznym losowaniem polega na tym, że przy małych instancjach (jak Twoje 6x6) często losujesz to samo.Metoda: Losowanie Rankingu (Factoradic)
+Każda możliwa permutacja $n$ miast ma swój unikalny numer (indeks) od $0$ do $(n-1)! - [cite_start]1$.Zamiast mieszać tablicę, losujemy jedną ogromną liczbę $K$ z tego zakresu.Używamy algorytmu konwersji liczby $K$ na konkretną permutację (system silniowy).Dlaczego to działa? Jeśli użyjesz generatora liczb losowych o bardzo długim okresie (np. Mersenne Twister std::mt19937) i będziesz losować unikalne indeksy $K$, masz gwarancję, że nie powtórzysz tej samej trasy, dopóki nie wyczerpiesz cyklu generatora. Zachowujesz przy tym całkowicie losowy charakter, bo nie idziesz „po kolei”.
+
+
+
+3. Złożoność obliczeniowa (na podstawie Twoich wyników)Możesz wpisać do raportu następujące wyliczenia:Czas na 1 próbę (11x11): $290\text{ ms} / 1\,500\,000 \approx 0,00019\text{ ms}$.Wniosek: Złożoność jest typu $O(k \cdot n)$, gdzie $k$ to liczba prób, a $n$ to liczba miast. Czas rośnie liniowo względem liczby prób. Jeśli podwoisz liczbę miast ($n$), czas jednej próby również wzrośnie mniej więcej dwukrotnie.
+
+
+3. Górne (UB) i Dolne Ograniczenie (LB) – Teoria do raportuTe pojęcia  są bardzo często pytane na obronach projektów. Oto jak to wytłumaczyć ludzkim językiem:UB (Górne ograniczenie - Upper Bound): To po prostu koszt jakiejkolwiek poprawnej (zamykającej się) trasy, która odwiedza wszystkie miasta dokładnie raz. Ponieważ szukamy najkrótszej drogi, wiemy na 100%, że wynik optymalny nie będzie gorszy (większy) niż trasa, którą już udało nam się znaleźć.Sposób wyznaczania: Bierzemy dowolny szybki algorytm heurystyczny (np. nasze NN, RNN lub nawet RAND) i uruchamiamy go. Wynik, który wypluje, staje się naszym UB.LB (Dolne ograniczenie - Lower Bound): To teoretyczna wartość, poniżej której na pewno nie uda się ułożyć trasy. LB często nie jest nawet prawidłową trasą komiwojażera – to po prostu matematyczne oszacowanie.Sposób wyznaczania 1: Minimalne Drzewo Rozpinające (MST) zwane metodą "1-Tree".Sposób wyznaczania 2: Sumujemy koszty dwóch najkrótszych krawędzi wychodzących z każdego miasta, a następnie dzielimy sumę przez 2.Efektywność wyznaczania UB w oparciu o badane algorytmy:Zgodnie z wymaganiami, musisz ocenić zaimplementowane algorytmy pod kątem tego, jak sprawnie wyznaczają UB:NN (Nearest Neighbour): Jest bardzo efektywny ze względu na niską złożoność obliczeniową (zwykle rzędu $O(n^2)$). W ułamku sekundy dostarcza nam bardzo solidne górne ograniczenie (UB), które jest zazwyczaj znacznie lepsze niż to z algorytmu losowego.RNN (Repetitive Nearest Neighbour): Złożoność wynosi $O(n^3)$ (uruchamia NN dla $n$ wierzchołków). Choć działa wolniej niż zwykłe NN, dostarcza najściślejsze (najlepsze) UB ze wszystkich testowanych przez Ciebie algorytmów przybliżonych.RAND (Algorytm losowy): Efektywność jest niska. Mimo że działa w czasie $O(k \cdot n)$, to wygenerowane UB jest często bardzo słabej jakości (bardzo wysoki koszt trasy), chyba że uruchomimy miliony iteracji, co zabija czas.
