@@ -5,50 +5,66 @@
 
 int main() {
     TSP problem;
-      std::string fileName = "matrix_6x6.atsp";
-    // std::string fileName = "matrix_8x8.atsp";
-    // std::string fileName = "matrix_11x11.atsp";
-    // std::string fileName = "matrix_12x12.atsp";
-    // std::string fileName = "matrix_13x13.atsp";
-    // std::string fileName = "matrix_14x14.atsp";
-    // std::string fileName = "matrix_15x15.atsp";
-    // std::string fileName = "matrix_20x20.atsp";
-    // std::string fileName = "matrix_21x21.atsp";
-    // std::string fileName = "matrix_22x22.atsp";
-    // std::string fileName = "matrix_23x23.atsp";
-    // std::string fileName = "matrix_50x50.atsp";
-    // std::string fileName = "matrix_60x60.atsp";
-    // std::string fileName = "matrix_70x70.atsp";
-    // std::string fileName = "matrix_71x71.atsp";
-    // std::string fileName = "matrix_72x72.atsp";
-    // std::string fileName = "matrix_73x73.atsp";
-    // std::string fileName = "matrix_74x74.atsp";
-    // std::string fileName = "matrix_75x75.atsp";
-    // std::string fileName = "matrix_76x76.atsp";
-    // std::string fileName = "matrix_77x77.atsp";
-    // std::string fileName = "matrix_78x78.atsp";
-    // std::string fileName = "matrix_79x79.atsp";
-    // std::string fileName = "matrix_80x80.atsp";
-    // std::string fileName = "matrix_90x90.atsp";
-    // std::string fileName = "matrix_91x91.atsp";
-    // std::string fileName = "matrix_92x92.atsp";
-    // std::string fileName = "matrix_93x93.atsp";
-    // std::string fileName = "matrix_94x94.atsp";
-    // std::string fileName = "matrix_95x95.atsp";
-    // std::string fileName = "matrix_100x100.atsp";
+    // std::string fileName = "matrix_6x6.atsp"; int upperBound = 150;
+    // std::string fileName = "matrix_8x8.atsp"; int upperBound = 145;
+    // std::string fileName = "matrix_11x11.atsp"; int upperBound = 160;
+    // std::string fileName = "matrix_12x12.atsp"; int upperBound = 203;
+    // std::string fileName = "matrix_13x13.atsp"; int upperBound = 216;
+    // std::string fileName = "matrix_14x14.atsp"; int upperBound = 172;
+    // std::string fileName = "matrix_15x15.atsp"; int upperBound = 210;
+    // std::string fileName = "matrix_16x16.atsp"; int upperBound = 294;
+    // std::string fileName = "matrix_17x17.atsp"; int upperBound = 235;
+    // std::string fileName = "matrix_18x18.atsp"; int upperBound = 229;
+    // std::string fileName = "matrix_19x19.atsp"; int upperBound = 178;
+    // std::string fileName = "matrix_20x20.atsp"; int upperBound = 262;
+    // std::string fileName = "matrix_21x21.atsp"; int upperBound = 231;
+    // std::string fileName = "matrix_22x22.atsp"; int upperBound = 239;
+    // std::string fileName = "matrix_23x23.atsp"; int upperBound = 272;
+    // std::string fileName = "matrix_50x50.atsp"; int upperBound = 239;
+    // std::string fileName = "matrix_60x60.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_70x70.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_71x71.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_72x72.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_73x73.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_74x74.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_75x75.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_76x76.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_77x77.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_78x78.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_79x79.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_80x80.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_90x90.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_91x91.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_92x92.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_93x93.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_94x94.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_95x95.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "matrix_100x100.atsp"; int upperBound = 2147483647;
 
-   // std::string fileName = "s_matrix_6x6.atsp";
-    // std::string fileName = "s_matrix_8x8.atsp";
-    // std::string fileName = "s_matrix_11x11.atsp";
-    // std::string fileName = "s_matrix_12x12.atsp";
-    // std::string fileName = "s_matrix_13x13.atsp";
-    // std::string fileName = "s_matrix_14x14.atsp";
-    // std::string fileName = "s_matrix_15x15.atsp";
-    // std::string fileName = "s_matrix_16x16.atsp";
-    // std::string fileName = "s_matrix_17x17.atsp";
-    // std::string fileName = "s_matrix_18x18.atsp";
-    // std::string fileName = "s_matrix_19x19.atsp";
-        // std::string fileName = "s_matrix_20x20.atsp";
+    // std::string fileName = "s_matrix_6x6.atsp"; int upperBound = 266;
+     std::string fileName = "s_matrix_8x8.atsp"; int upperBound = 242;
+    // std::string fileName = "s_matrix_11x11.atsp"; int upperBound = 185;
+    // std::string fileName = "s_matrix_12x12.atsp"; int upperBound = 208;
+    // std::string fileName = "s_matrix_13x13.atsp"; int upperBound = 190;
+    // std::string fileName = "s_matrix_14x14.atsp"; int upperBound = 2147483647;
+    // std::string fileName = "s_matrix_15x15.atsp"; int upperBound = 210;
+    // std::string fileName = "s_matrix_16x16.atsp"; int upperBound = 172;
+    // std::string fileName = "s_matrix_17x17.atsp"; int upperBound = 238;
+    // std::string fileName = "s_matrix_18x18.atsp"; int upperBound = 192;
+    // std::string fileName = "s_matrix_19x19.atsp"; int upperBound = 341;
+    // std::string fileName = "s_matrix_20x20.atsp"; int upperBound = 201;
+    // std::string fileName = "s_matrix_21x21.atsp"; int upperBound = 239;
+    // std::string fileName = "s_matrix_22x22.atsp"; int upperBound = 240;
+    // std::string fileName = "s_matrix_23x23.atsp"; int upperBound = 281;
+    // std::string fileName = "s_matrix_24x24.atsp"; int upperBound = 291;
+    // std::string fileName = "s_matrix_25x25.atsp"; int upperBound = 254;
+    // std::string fileName = "s_matrix_26x26.atsp"; int upperBound = 301;
+    // std::string fileName = "s_matrix_27x27.atsp"; int upperBound = 247;
+    // std::string fileName = "s_matrix_28x28.atsp"; int upperBound = 229;
+    // std::string fileName = "s_matrix_29x29.atsp"; int upperBound = 206;
+
+    // upperBound = 2147483647;
+
 
     if (!problem.loadFromFile(fileName)) {
         std::cout << "Blad pliku!" << std::endl;
@@ -74,10 +90,10 @@ int main() {
         //  int result = problem.solveNN(0);
         // int result = problem.solveRNN();
 
-          int upperBound = 2147483647;
+
          // int result = problem.solveBnB_DFS(upperBound);
          // int result = problem.solveBnB_BFS(upperBound);
-           int result = problem.solveBnB_BestFirstSearch(upperBound);
+          int result = problem.solveBnB_BestFirstSearch(upperBound);
         auto end = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double, std::milli> elapsed = end - start;
@@ -85,8 +101,6 @@ int main() {
         double error = 0;
         if (opt > 0) {
             error = (static_cast<double>(result - opt) / opt) * 100.0;
-        } else {
-            std::cout << " (Brak znanego rozwiazania optymalnego dla tej instancji) ";
         }
 
         std::cout << "Najlepszy znaleziony koszt: " << result << std::endl;
@@ -101,14 +115,14 @@ int main() {
         }
         */
   //  }
+
     /*
-     problem.generateRandomSymmetric(16, "s_matrix_16x16.atsp");
-     problem.generateRandomSymmetric(17, "s_matrix_17x17.atsp");
-     problem.generateRandomSymmetric(18, "s_matrix_18x18.atsp");
-     problem.generateRandomSymmetric(19, "s_matrix_19x19.atsp");
+     problem.generateRandomAsymetric(16, "matrix_16x16.atsp");
+     problem.generateRandomAsymetric(17, "matrix_17x17.atsp");
+     problem.generateRandomAsymetric(18, "matrix_18x18.atsp");
+     problem.generateRandomAsymetric(19, "matrix_19x19.atsp");
 
 */
-
 
     return 0;
 }
